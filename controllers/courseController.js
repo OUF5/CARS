@@ -50,6 +50,7 @@ const openAddCourseForm = (request, response) => {
 
 const openAddGradeForm = (request, response) => {
     const grade = request.body.grade;
+    let courses;
     Course.find()
     .then( (result) => {
 
@@ -98,11 +99,11 @@ const addCourse = (request, response) => {
   newCourse.save()
     .then( (result) => {
       ERROR = "";
-      response.redirect('/');
+      response.redirect('/courses/add');
     })
     .catch( (err) => {
       ERROR = "Data Couldn't be Added!";
-      response.redirect('/');
+      response.redirect('/courses/add');
     });
 }
 
